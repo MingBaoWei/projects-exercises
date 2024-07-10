@@ -1,0 +1,35 @@
+<html
+<head>
+  <meta charset="utf-8">
+  <title>Lista de Elementos</title>
+</head>
+<body>
+
+  <ul id="lista">
+    <li>Huawei</li>
+    <li>iPhone</li>
+    <li>Xiaomi</li>
+    <li>Tesla</li>
+  </ul>
+
+  <button id="boton">Añadir elemento</button>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var boton = document.getElementById("boton");
+      var lista = document.getElementById("lista");
+
+      boton.addEventListener("click", function() {
+        var nuevoElemento = document.createElement("li");
+
+        var nuevoNombre = prompt("Ingrese el nombre del nuevo elemento:");
+
+        nuevoElemento.textContent = nuevoNombre;
+
+        lista.appendChild(nuevoElemento);
+      });
+    });
+  </script>
+
+</body>
+</html>

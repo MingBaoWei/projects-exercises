@@ -1,0 +1,53 @@
+<html>
+ <head>
+ <meta charset="utf-8">
+ <title>Ejercicio 3- DOM</title>
+ </head>
+ <body>
+    <h1>Introducción al DOM</h1>
+    <p>Puedes seleccionar el primer hijo de un nodo elemento,
+    por ejemplo de body, de dos formas:</p>
+    <ul>
+    <li>document.body.firstChild</li>
+    <li>document.body.childNodes[0]</li>
+    </ul>
+        <script>
+        // La siguiente función muestra un nodo hijo de un nodo del DOM
+        // El parámetro nodo es un objeto del DOM
+        // El parámetro indice es el índice del hijo a mostrar
+        function mostrarHijo(nodo, indice) {
+            // Verificar que el nodo sea de tipo elemento
+            if (nodo.nodeType !== 1) {
+                console.error("Tipo de nodo incorrecto");
+                return null;
+            }
+
+            // Obtener la lista de nodos hijos
+            var hijos = nodo.childNodes;
+
+            // Verificar que el índice esté en el rango correcto
+            if (indice < 0 || indice >= hijos.length) {
+                console.error("Índice incorrecto");
+                return null;
+            }
+
+            return hijos[indice];
+        }
+
+        // Ejemplos de uso
+        // Debe mostrar un nodo de texto
+        console.log(mostrarHijo(document.body, 0));
+        // Debe mostrar el nodo h1
+        console.log(mostrarHijo(document.body, 1));
+        // Debe mostrar el error "Índice incorrecto"
+        // El índice elegido no puede ser negativo
+        console.log(mostrarHijo(document.body, -1));
+        // Debe mostrar el error "Índice incorrecto"
+        // El nodo body tiene menos de 9 nodos hijos
+        console.log(mostrarHijo(document.body, 8));
+        // Debe mostrar el error "Tipo de nodo incorrecto"
+        // El primer nodo hijo de body es un nodo de texto y no puede tener hijos
+        console.log(mostrarHijo(document.body.childNodes[0], 0));
+        </script>
+ </body>
+</html>

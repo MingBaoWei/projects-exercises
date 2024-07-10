@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrito de Compras</title>
+  <script>
+    function agregarAlCarrito() {
+      var producto = document.getElementById('producto').value;
+      var cantidad = document.getElementById('cantidad').value;
+
+      // Almacenar en sessionStorage para simular sesión actual
+      sessionStorage.setItem(producto, cantidad);
+
+      alert('Producto agregado al carrito correctamente.');
+    }
+
+    function mostrarCarrito() {
+      var contenido = '<h2>Carrito de Compras</h2><ul>';
+
+      for (var i = 0; i < sessionStorage.length; i++) {
+        var producto = sessionStorage.key(i);
+        var cantidad = sessionStorage.getItem(producto);
+
+        contenido += '<li>' + producto + ': ' + cantidad + ' unidades</li>';
+      }
+
+      contenido += '</ul>';
+
+      document.getElementById('contenidoCarrito').innerHTML = contenido;
+    }
+  </script>
+</head>
+<body>
+  <h1>Simulador de Carrito de Compras</h1>
+  <label for="producto">Producto:</label>
+  <input type="text" id="producto" placeholder="Nombre del producto"><br>
+  <label for="cantidad">Cantidad:</label>
+  <input type="number" id="cantidad" placeholder="Cantidad"><br>
+  <button onclick="agregarAlCarrito()">Agregar al Carrito</button>
+  <br><br>
+  <div id="contenidoCarrito"></div>
+
+  <script>
+    window.onload = mostrarCarrito;
+  </script>
+</body>
+</html>

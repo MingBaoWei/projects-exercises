@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<biblioteca>
+<libro>
+    <titulo>Libro 1</titulo>
+    <isbn>1234567890</isbn>
+    <autor>Autor 1</autor>
+    <editorial>Editorial 1</editorial>
+    <año_edicion>2022</año_edicion>
+    <estado>libre</estado>
+</libro>
+<libro>
+    <titulo>Libro 2</titulo>
+    <isbn>0987654321</isbn>
+    <autor>Autor 2</autor>
+    <editorial>Editorial 2</editorial>
+    <año_edicion>2020</año_edicion>
+    <estado>libre</estado>
+</libro>
+</biblioteca>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Compra de Billetes de Autobús</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let origenSelect = document.getElementById('origen');
+            let destinoSelect = document.getElementById('destino');
+
+            origenSelect.addEventListener('change', function () {
+                actualizarDestinos(origenSelect.value);
+            });
+
+            function actualizarDestinos(ciudadOrigen) {
+                const destinosURL = `${ciudadOrigen.toLowerCase()}.xml`;
+
+                fetch(destinosURL)
+                    .then(response => response.text())
+                    .then(destinosXML => {
+                        destinoSelect.innerHTML = '';
+
+                        const defaultOption = document.createElement('option');
+                        defaultOption.value = '0';
+                        defaultOption.text = '--Seleccione un destino--';
+                        destinoSelect.appendChild(defaultOption);
+
+                        const parser = new DOMParser();
+                        const xmlDoc = parser.parseFromString(destinosXML, 'application/xml');
+                        const destinos = xmlDoc.getElementsByTagName('ciudad');
+
+                        for (let i = 0; i < destinos.length; i++) {
+                            const destino = destinos[i].textContent;
+
+                            const option = document.createElement('option');
+                            option.value = destino;
+                            option.text = destino;
+                            destinoSelect.appendChild(option);
+                        }
+
+                        destinoSelect.disabled = false;
+                    })
+                    .catch(error => {
+                        console.error('Error al obtener destinos:', error);
+                    });
+            }
+        });
+    </script>
+</head>
+<body>
+    <label for="origen">Origen:</label>
+    <select id="origen">
+        <option value="madrid">Madrid</option>
+        <option value="barcelona">Barcelona</option>
+        <option value="valencia">Valencia</option>
+    </select>
+
+    <br>
+
+    <label for="destino">Destino:</label>
+    <select id="destino" disabled>
+        <option value="0">--Seleccione un destino--</option>
+    </select>
+</body>
+</html>

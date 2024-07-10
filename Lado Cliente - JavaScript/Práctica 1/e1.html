@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <script language="JavaScript">
+            var numD = 0;
+            //SE PUEDE HACER CON UN TO_STRING PERO LO HICE ASÍ SIN SABERLO. PERO CON TO_STRING SERÍA PASARLE LA BASE 2 Y 10 y ya.
+            do{
+                numD = parseInt(prompt("Escriba el numero al que quiere cambiar a binario"));
+                if(numD<0 || numD>999){
+                alert("Numero introducido incorrecto");
+                }
+            }while(numD<0 || numD>999)
+
+                var i=0;
+                var arrayB = [];
+            while(numD!=0){
+                arrayB[i] = Math.floor(numD%2);
+                numD = Math.floor(numD/2);
+                i++;
+            }
+
+            arrayB.reverse();
+
+            for(i=0;i<arrayB.length;i++){
+                console.log(arrayB[i]);
+            }
+        </script>
+    </head>
+    <body></body>
+</html>

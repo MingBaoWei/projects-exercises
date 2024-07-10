@@ -1,0 +1,35 @@
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>Diarios digitales</title>
+    </head>
+    <body>
+        <h1>Algunos diarios que puedes leer en línea</h1>
+        <div id="contenido"></div>
+            <script>
+                // Lista de diarios
+                var diarios = ["http://elpais.com/", "http://www.elmundo.es/", "http://elespanol.com/"];
+
+                var divContenido = document.getElementById("contenido");
+
+                var lista = document.createElement("ul");
+
+                for (var i = 0; i < diarios.length; i++) {
+                    var diario = diarios[i];
+
+                    var listItem = document.createElement("li");
+
+                    var enlace = document.createElement("a");
+                    enlace.href = diario;
+                    enlace.textContent = diario;
+
+                    listItem.appendChild(enlace);
+
+                    lista.appendChild(listItem);
+                }
+
+                divContenido.appendChild(lista);
+            </script>
+    </body>
+</html>

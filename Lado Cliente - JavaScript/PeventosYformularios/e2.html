@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<script src="e2.js" defer></script>
+</head>
+<body>
+
+<h2>Formulario de Registro</h2>
+
+<form id="registroForm">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre">
+    <br>
+    <br>
+    <label for="apellido">Apellido:</label>
+    <input type="text" id="apellido">
+    <br>
+    <br>
+    <label for="email">Email:</label>
+    <input type="email" id="email">
+    <br>
+    <br>
+    <label for="password">Password:</label>
+    <input type="password" id="password">
+    <br>
+    <br>
+    <label for="comentarios">Comentarios:</label>
+    <textarea id="comentarios" maxlength="50"></textarea>
+    <br>
+    <br>
+    <label>
+    <input type="checkbox" id="acepto">
+    Acepto las condiciones de servicio.
+    </label>
+
+    <button type="button" onclick="enviarFormulario()">Enviar</button>
+</form>
+
+</body>
+</html>

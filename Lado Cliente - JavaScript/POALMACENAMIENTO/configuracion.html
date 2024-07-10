@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Configuración</title>
+  <script>
+    function guardarConfiguracion() {
+      // Obtener valores de los elementos HTML
+      var colorFondo = document.getElementById('colorFondo').value;
+      var tituloPagina = document.getElementById('tituloPagina').value;
+      var nombreUsuario = document.getElementById('nombreUsuario').value;
+
+      // Crear cadena de configuración con valores separados por '|'
+      var configuracion = colorFondo + '|' + tituloPagina + '|' + nombreUsuario;
+
+      // Almacenar cada valor en una cookie con expiración de 1 día
+      document.cookie = 'colorFondo=' + colorFondo + '; expires=' + new Date(new Date().getTime() + 24 * 60 * 60 * 1000).toUTCString();
+      document.cookie = 'tituloPagina=' + tituloPagina + '; expires=' + new Date(new Date().getTime() + 24 * 60 * 60 * 1000).toUTCString();
+      document.cookie = 'nombreUsuario=' + nombreUsuario + '; expires=' + new Date(new Date().getTime() + 24 * 60 * 60 * 1000).toUTCString();
+
+      alert('Configuración guardada correctamente.');
+    }
+
+    function mostrarCookie() {
+      // Obtener y mostrar la cookie
+      var configuracionCookie = document.cookie;
+      alert('Cookie almacenada:\n' + configuracionCookie);
+    }
+  </script>
+</head>
+<body>
+  <h1>Configuración</h1>
+  <label for="colorFondo">Color de fondo:</label>
+  <input type="color" id="colorFondo"><br>
+  <label for="tituloPagina">Título de la página:</label>
+  <input type="text" id="tituloPagina"><br>
+  <label for="nombreUsuario">Nombre de usuario:</label>
+  <input type="text" id="nombreUsuario"><br>
+  <button onclick="guardarConfiguracion()">Guardar Configuración</button>
+  <button onclick="mostrarCookie()">Mostrar Cookie</button>
+</body>
+</html>

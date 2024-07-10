@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <script language="JavaScript">
+class Calificaciones {
+    constructor(modulo, nota) {
+        this.modulo = modulo;
+        this.nota = nota;
+    }
+}
+
+class Alumno {
+    constructor(nombre, curso, calificaciones) {
+        this.nombre = nombre;
+        this.curso = curso;
+        this.calificaciones = calificaciones;
+    }
+
+    VerDatos() {
+        console.log("Nombre: "+this.nombre);
+        console.log("Curso: "+this.curso);
+        console.log("Calificaciones: ");
+        this.calificaciones.forEach((calificaciones) => {
+            console.log("Módulo: "+calificaciones.modulo+", Nota: "+calificaciones.nota);
+        });
+        console.log();
+    }
+}
+
+
+function obtenerCalificaciones() {
+    const modulo = prompt("Ingrese el módulo: ");
+    const nota = parseFloat(prompt("Ingrese la nota: "));
+    return new Calificaciones(modulo, nota);
+}
+
+
+const calificacionesAlumno1 = [];
+const calificacionesAlumno2 = [];
+const calificacionesAlumno3 = [];
+
+for (let i = 0; i < 3; i++) {
+    calificacionesAlumno1.push(obtenerCalificaciones());
+}
+
+for (let i = 0; i < 3; i++) {
+    calificacionesAlumno2.push(obtenerCalificaciones());
+}
+
+for (let i = 0; i < 3; i++) {
+    calificacionesAlumno3.push(obtenerCalificaciones());
+}
+
+
+const alumno1 = new Alumno("Alumno 1", "DAW", calificacionesAlumno1);
+const alumno2 = new Alumno("Alumno 2", "ASIR", calificacionesAlumno2);
+const alumno3 = new Alumno("Alumno 3", "DAM", calificacionesAlumno3);
+
+
+const listaAlumnos = [alumno1, alumno2, alumno3];
+
+
+listaAlumnos.forEach((alumno) => {
+    alumno.VerDatos();
+});
+        </script>
+    </head>
+    <body></body>
+</html>

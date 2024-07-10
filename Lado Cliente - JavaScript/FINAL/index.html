@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css.css">
+    <title>Librería</title>
+</head>
+<body>
+    <div class="cont">
+    <h1 id="1">Librería Online</h1>
+    <!--<div id="booksContainer"></div>-->
+    <div id="loginForm">
+        <div class="input-container1">
+            <input id="username" class="input1" name="text" type="text">
+            <label class="label" for="input">Cuenta</label>
+            <div class="topline"></div>
+            <div class="underline"></div>
+            </div>
+            <br>
+            <button class="button1" onclick="login()">Iniciar</button>
+    </div>
+    <div id="bookList">
+        <h2>Listado de Libros</h2>
+        <input id="searchInput" oninput="searchBooks()" style="display:none" placeholder="Titulo, autor o categoria" type="text" name="text" class="input2">
+        <br>
+        <div id="books" style="display:none;"></div>
+        <br>
+        <div id="addBookForm" style="display:none;">
+            <h2>Agregar Libro</h2>
+            <label for="title">Título:</label>
+            <input type="text" id="title">
+            <br>
+            <br>
+            <label for="author">Autor:</label>
+            <input type="text" id="author">
+            <br>
+            <br>
+            <label for="category">Categoría:</label>
+            <select id="category">
+                <option value="Comedia">Comedia</option>
+                <option value="Terror">Terror</option>
+                <option value="Romance">Romance</option>
+                <option value="Drama">Drama</option>
+            </select>
+            <button onclick="addBook()">Agregar Libro</button>
+        </div>
+    </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

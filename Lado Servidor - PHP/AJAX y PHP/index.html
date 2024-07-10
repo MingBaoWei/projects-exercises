@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedido</title>
+</head>
+<body>
+    <div id="productos-container">
+        <!-- Se mostrarán los productos aquí -->
+    </div>
+
+    <button onclick="mostrarFormularioPedido()">Realizar pedido</button>
+
+    <div id="formulario-pedido" style="display: none;">
+        <!-- Formulario para datos de envío -->
+        <form id="pedido-form" method="POST">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="direccion">Dirección:</label>
+            <input type="text" id="direccion" name="direccion" required>
+
+            <label for="telefono">Teléfono:</label>
+            <input type="text" id="telefono" name="telefono" required>
+
+            <button type="button" onclick="guardarPedido()">Guardar Pedido</button>
+        </form>
+    </div>
+
+    <div id="mensaje"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

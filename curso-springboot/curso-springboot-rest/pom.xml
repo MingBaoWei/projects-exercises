@@ -1,0 +1,58 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.weiminglai</groupId>
+    <artifactId>curso-springboot</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <groupId>com.weiminglai.app</groupId>
+  <artifactId>curso-springboot-rest</artifactId>
+  <packaging>war</packaging>
+  <dependencies>
+    <dependency>
+        <groupId>com.weiminglai.app</groupId>
+        <artifactId>curso-springboot-core</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+	<dependency>
+	    <groupId>org.junit.jupiter</groupId>
+	    <artifactId>junit-jupiter-api</artifactId>
+	    <version>5.10.2</version>
+	    <scope>test</scope>
+	</dependency>
+	<dependency>
+	    <groupId>org.mockito</groupId>
+	    <artifactId>mockito-core</artifactId>
+	    <version>5.11.0</version>
+	    <scope>test</scope>
+	</dependency>
+  </dependencies>
+  
+  
+	<build>
+		<plugins>
+			<plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>10.10.0</version>
+                <configuration>
+                    <url>jdbc:mysql://localhost:3306/db_weiminglai</url>
+                    <user>root</user>
+                    <password>1234</password>
+                    <locations>
+            			<location>classpath:db/migration</location>
+        			</locations>
+        			<baselineOnMigrate>true</baselineOnMigrate>
+                </configuration>
+                <dependencies>
+					<dependency>
+					    <groupId>org.flywaydb</groupId>
+					    <artifactId>flyway-mysql</artifactId>
+					    <version>10.10.0</version>
+					</dependency>
+				</dependencies>
+            </plugin>
+            
+		</plugins>
+	</build>
+</project>

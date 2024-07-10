@@ -1,0 +1,123 @@
+<html>
+    <head>
+        <script language="JavaScript">
+class Calificaciones {
+    constructor(modulo) {
+        this.modulo = modulo;
+        this.notas = [];
+    }
+    
+    agregarNota(evaluacion, nota) {
+        if (evaluacion >= 1 && evaluacion <= 3) {
+            this.notas[evaluacion - 1] = nota;
+        } else {
+            console.log("Número de evaluación no válido.");
+        }
+    }
+}
+
+class Alumno {
+    constructor(nombre, curso, calificaciones) {
+        this.nombre = nombre;
+        this.curso = curso;
+        this.calificaciones = calificaciones;
+    }
+
+    VerDatos() {
+        console.log("Nombre: " + this.nombre);
+        console.log("Curso: " + this.curso);
+        console.log("Calificaciones: ");
+        this.calificaciones.forEach((calificacion) => {
+            console.log("Módulo: " + calificacion.modulo + ", Notas: " + calificacion.notas.join(', '));
+        });
+        console.log();
+    }
+
+    MostrarNotasPorEvaluaciones() {
+        console.log("Notas por evaluaciones de " + this.nombre + ":");
+        this.calificaciones.forEach((calificacion) => {
+            console.log("Módulo: " + calificacion.modulo);
+            for (let i = 0; i < calificacion.notas.length; i++) {
+                console.log("Evaluación " + (i + 1) + ": " + calificacion.notas[i]);
+            }
+        });
+    }
+
+    MostrarNotasAprobadas() {
+        console.log("Notas aprobadas de " + this.nombre + ":");
+        this.calificaciones.forEach((calificacion) => {
+            console.log("Módulo: " + calificacion.modulo);
+            for (let i = 0; i < calificacion.notas.length; i++) {
+                if (calificacion.notas[i] >= 5) {
+                    console.log("Evaluación " + (i + 1) + ": " + calificacion.notas[i]);
+                }
+            }
+        });
+    }
+
+    CalcularNotaMedia() {
+        let sumaNotas = 0;
+        let totalNotas = 0;
+        this.calificaciones.forEach((calificacion) => {
+            calificacion.notas.forEach((nota) => {
+                if (!isNaN(nota)) {
+                    sumaNotas += nota;
+                    totalNotas++;
+                }
+            });
+        });
+
+        if (totalNotas === 0) {
+            console.log("No hay notas registradas para calcular la nota media.");
+        } else {
+            const notaMedia = Math.round(sumaNotas / totalNotas);
+            console.log("Nota media de " + this.nombre + ": " + notaMedia);
+        }
+    }
+}
+
+function obtenerCalificaciones() {
+    const modulo = prompt("Ingrese el módulo: ");
+    const calificacion = new Calificaciones(modulo);
+
+    for (let i = 1; i <= 3; i++) {
+        const nota = parseFloat(prompt("Ingrese la nota de la evaluación " + i + ": "));
+        calificacion.agregarNota(i, nota);
+    }
+
+    return calificacion;
+}
+
+const calificacionesAlumno1 = [];
+const calificacionesAlumno2 = [];
+const calificacionesAlumno3 = [];
+
+for (let i = 0; i < 3; i++) {
+    calificacionesAlumno1.push(obtenerCalificaciones());
+}
+
+for (let i = 0; i < 3; i++) {
+    calificacionesAlumno2.push(obtenerCalificaciones());
+}
+
+for (let i = 0; i < 3; i++) {
+    calificacionesAlumno3.push(obtenerCalificaciones());
+}
+
+const alumno1 = new Alumno("Alumno 1", "DAW", calificacionesAlumno1);
+const alumno2 = new Alumno("Alumno 2", "ASIR", calificacionesAlumno2);
+const alumno3 = new Alumno("Alumno 3", "DAM", calificacionesAlumno3);
+
+const listaAlumnos = [alumno1, alumno2, alumno3];
+
+listaAlumnos.forEach((alumno) => {
+    alumno.VerDatos();
+    alumno.MostrarNotasPorEvaluaciones();
+    alumno.MostrarNotasAprobadas();
+    alumno.CalcularNotaMedia();
+});
+
+        </script>
+    </head>
+    <body></body>
+</html>

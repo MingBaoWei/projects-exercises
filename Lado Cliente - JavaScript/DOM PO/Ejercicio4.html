@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información de Enlaces</title>
+</head>
+<body>
+
+    <h1>Página con Enlaces</h1>
+
+    <p>
+        Párrafo 1: <a href="http://ej1.com">Enlace 1</a>, <a href="http://ej2.com">Enlace 2</a>
+    </p>
+
+    <p>
+        Párrafo 2: <a href="http://ej3.com">Enlace 3</a>, <a href="http://ej4.com">Enlace 4</a>, <a href="http://ej5.com">Enlace 5</a>
+    </p>
+
+    <p>
+        Párrafo 3: <a href="http://prueba">Enlace 6</a>, <a href="http://ej7.com">Enlace 7</a>, <a href="http://prueba">Enlace 8</a>
+    </p>
+
+    <script>
+        // Obtener todos los enlaces de la página
+        var enlaces = document.getElementsByTagName('a');
+         
+        console.log("Número total de enlaces: " + enlaces.length);
+
+        // Obtener la dirección a la que apunta el penúltimo enlace
+        if (enlaces.length >= 2) {
+            var penultimoEnlace = enlaces[enlaces.length - 2];
+            console.log("Dirección del penúltimo enlace: " + penultimoEnlace.href);
+        }
+
+        // Contar el número de enlaces que apunten a "http://prueba"
+        var enlacesPrueba = document.querySelectorAll('a[href="http://prueba"]');
+        console.log("Número de enlaces que apuntan a 'http://prueba': " + enlacesPrueba.length);
+
+        // Contar el número de enlaces del tercer párrafo
+        var tercerParrafoEnlaces = document.querySelectorAll('p:nth-child(3) a');
+        console.log("Número de enlaces del tercer párrafo: " + tercerParrafoEnlaces.length);
+    </script>
+
+</body>
+</html>
